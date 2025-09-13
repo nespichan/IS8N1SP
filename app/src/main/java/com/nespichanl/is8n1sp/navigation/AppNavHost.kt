@@ -1,6 +1,7 @@
 package com.nespichanl.is8n1sp.navigation
 
 import android.app.Activity
+import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
@@ -11,6 +12,7 @@ import com.nespichanl.is8n1sp.ui.grades.GradesScreen
 import com.nespichanl.is8n1sp.ui.home.HomeScreen
 import com.nespichanl.is8n1sp.ui.members.MembersScreen
 import com.nespichanl.is8n1sp.ui.splash.SplashScreen
+import com.nespichanl.is8n1sp.ui.transfer.ProductEntryActivity
 
 @Composable
 fun AppNavHost(startDestination: String = "splash") {
@@ -31,6 +33,9 @@ fun AppNavHost(startDestination: String = "splash") {
                 onOpenMembers = { navController.navigate("members") },
                 onOpenAbout   = { navController.navigate("about") },
                 onOpenGrades  = { navController.navigate("grades") },
+                onOpenDataPass = {
+                    context.startActivity(Intent(context, ProductEntryActivity::class.java))
+                },
                 onExit        = {
                     (context as? Activity)?.finishAffinity()
                 }

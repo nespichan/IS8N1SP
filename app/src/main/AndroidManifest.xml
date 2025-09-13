@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.transfer.ProductEntryActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.transfer.ProductSummaryActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

@@ -33,6 +33,7 @@ fun HomeScreen(
     onOpenMembers: () -> Unit = {},
     onOpenAbout: () -> Unit = {},
     onOpenGrades: () -> Unit = {},
+    onOpenDataPass: () -> Unit = {},
     onExit: () -> Unit = {}
 ) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -95,7 +96,8 @@ fun HomeScreen(
         ) { innerPadding ->
             HomeContent(
                 modifier = Modifier.padding(innerPadding),
-                onOpenGrades = onOpenGrades
+                onOpenGrades = onOpenGrades,
+                onOpenDataPass = onOpenDataPass
             )
         }
     }
@@ -133,15 +135,20 @@ private data class DrawerOption(val title: String, val onClick: () -> Unit)
 @Composable
 private fun HomeContent(
     modifier: Modifier = Modifier,
-    onOpenGrades: () -> Unit
+    onOpenGrades: () -> Unit,
+    onOpenDataPass: () -> Unit
 ) {
     val opciones = listOf(
         OpcionHome(
-            titulo = "Registro de Notas",
+            titulo = "S02 → Registro de Notas",
             descripcion = "Formulario: Apellido, Curso, Nota1, Nota2, Nota3 → Promedio y Condición",
             onClick = onOpenGrades
         ),
-        // aquí podrías agregar más cards si luego se piden otras prácticas
+        OpcionHome(
+            titulo = "S03 → Paso de Datos entre Actividades",
+            descripcion = "Formulario: Id, Nombre, Precio → Mostrar Data Ingresada",
+            onClick = onOpenDataPass
+        ),
     )
 
     Column(
@@ -190,7 +197,7 @@ private fun Banner() {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "Sentencia de Control\nCondicional",
+            text = "Actividades del Curso\nPonte a Prueba",
             style = MaterialTheme.typography.headlineSmall.copy(color = Color.White),
             textAlign = TextAlign.Center
         )

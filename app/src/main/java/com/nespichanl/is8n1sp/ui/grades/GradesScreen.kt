@@ -51,7 +51,7 @@ fun GradesScreen(onContinue: () -> Unit) {
             NumberField(n3, { n3 = it }, "Nota 3 (0–20)")
 
             Spacer(Modifier.height(16.dp))
-
+            
             Button(onClick = {
                 val v1 = n1.toDoubleOrNull()
                 val v2 = n2.toDoubleOrNull()
