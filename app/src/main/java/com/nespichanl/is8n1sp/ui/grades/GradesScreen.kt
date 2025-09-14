@@ -8,6 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import kotlin.math.roundToInt
 
@@ -51,43 +52,56 @@ fun GradesScreen(onContinue: () -> Unit) {
             NumberField(n3, { n3 = it }, "Nota 3 (0–20)")
 
             Spacer(Modifier.height(16.dp))
-            
-            Button(onClick = {
-                val v1 = n1.toDoubleOrNull()
-                val v2 = n2.toDoubleOrNull()
-                val v3 = n3.toDoubleOrNull()
 
-                when {
-                    apellido.isBlank() || curso.isBlank() || v1 == null || v2 == null || v3 == null ->
-                        resultado = "Complete todos los campos con números válidos."
-                    listOf(v1, v2, v3).any { it < 0 || it > 20 } ->
-                        resultado = "Las notas deben estar entre 0 y 20."
-                    else -> {
-                        val prom = (((v1 + v2 + v3) / 3.0) * 100).roundToInt() / 100.0
-                        val cond = if (prom >= 11.0) "Aprobado" else "Desaprobado"
-                        resultado = """
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                OutlinedButton(
+                    onClick = { onContinue() },
+                    modifier = Modifier.weight(1f)
+                ) { Text("Finalizar") }
+
+                Button(
+                    onClick = {
+                        val v1 = n1.toDoubleOrNull()
+                        val v2 = n2.toDoubleOrNull()
+                        val v3 = n3.toDoubleOrNull()
+
+                        when {
+                            apellido.isBlank() || curso.isBlank() || v1 == null || v2 == null || v3 == null ->
+                                resultado = "Complete todos los campos con números válidos."
+                            listOf(v1, v2, v3).any { it < 0 || it > 20 } ->
+                                resultado = "Las notas deben estar entre 0 y 20."
+                            else -> {
+                                val prom = (((v1 + v2 + v3) / 3.0) * 100).roundToInt() / 100.0
+                                val cond = if (prom >= 11.0) "Aprobado" else "Desaprobado"
+                                resultado = """
                             Alumno: $apellido
                             Curso: $curso
                             Promedio: $prom
                             Condición: $cond
                         """.trimIndent()
-                    }
-                }
-            }) { Text("Calcular") }
+                            }
+                        }
+                    },
+                    modifier = Modifier.weight(1f)
+                ) { Text("Calcular") }
+            }
 
             Spacer(Modifier.height(16.dp))
             if (resultado.isNotBlank()) {
-                ElevatedCard(Modifier.fillMaxWidth()) {
+                ElevatedCard(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = Color.Red // Fondo rojo para toda la tarjeta
+                    )
+                ) {
                     Text(
                         text = resultado,
-                        style = MaterialTheme.typography.bodyLarge,
-                        modifier = Modifier.padding(16.dp)
+                        style = MaterialTheme.typography.bodyLarge.copy(color = Color.White), // Texto blanco
+                        modifier = Modifier.padding(all = 16.dp)
                     )
                 }
-            }
-            Spacer(Modifier.height(24.dp))
-            Button(onClick = onContinue) {
-                Text("Home")
             }
         }
     }

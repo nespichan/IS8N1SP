@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 class ProductEntryActivity : ComponentActivity() {
@@ -50,7 +51,7 @@ fun ProductEntryScreen(
         ) {
             OutlinedTextField(
                 value = id, onValueChange = { id = it },
-                label = { Text("ID (entero)") },
+                label = { Text("ID") },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()
@@ -68,10 +69,6 @@ fun ProductEntryScreen(
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth()
             )
-
-            error?.let {
-                Text(it, color = MaterialTheme.colorScheme.error)
-            }
 
             Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                 OutlinedButton(
@@ -95,6 +92,23 @@ fun ProductEntryScreen(
                     },
                     modifier = Modifier.weight(1f)
                 ) { Text("Enviar") }
+            }
+
+            error?.let {
+                ElevatedCard(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp),
+                    colors = CardDefaults.elevatedCardColors(
+                        containerColor = Color.Red // Fondo rojo para toda la tarjeta
+                    )
+                ) {
+                    Text(
+                        text = it,
+                        style = MaterialTheme.typography.bodyLarge.copy(color = Color.White), // Texto blanco
+                        modifier = Modifier.padding(all = 16.dp)
+                    )
+                }
             }
         }
     }
