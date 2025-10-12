@@ -30,6 +30,17 @@
             android:name=".ui.transfer.ProductSummaryActivity"
             android:exported="false" />
 
+        <activity android:name=".transfer.ProductSummaryActivity" android:exported="false"
+            android:theme="@style/Theme.IS8N1SP" />
+        <activity android:name=".transfer.ProductEntryActivity" android:exported="false"
+            android:theme="@style/Theme.IS8N1SP" />
+
+        <activity
+            android:name=".ui.tableview.S07TableActivity"
+            android:exported="false"
+            android:label="Navegación TableView (S07)"
+            android:theme="@style/Theme.IS8N1SP" />
+
     </application>
 
 </manifest>

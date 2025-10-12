@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical" android:padding="16dp"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+
+        <TextView android:text="Datos del Cliente" android:textStyle="bold"
+            android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/edtCliente"
+            android:hint="Nombres completos"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/edtDni"
+            android:hint="DNI (8 dígitos)"
+            android:inputType="number" android:maxLength="8"
+            android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+        <View android:layout_width="match_parent" android:layout_height="12dp"/>
+
+        <TextView android:text="SERVICIO" android:textStyle="bold"
+            android:textSize="16sp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+        <RadioGroup android:id="@+id/rgServicios"
+            android:layout_width="match_parent" android:layout_height="wrap_content">
+
+            <RadioButton android:id="@+id/rbtnDuo"
+                android:text="Dúo - Cámaras de Seguridad y Alarmas contra Robos"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <RadioButton android:id="@+id/rbtnTrio"
+                android:text="Trío - Cámaras de Seguridad - Alarmas contra Robos - Alarmas contra Incendio"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <RadioButton android:id="@+id/rbtnCamaras"
+                android:text="Solo Cámaras de Seguridad"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <RadioButton android:id="@+id/rbtnARobos"
+                android:text="Solo Alarmas contra Robos"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <RadioButton android:id="@+id/rbtnAIncendio"
+                android:text="Solo Alarmas contra Incendio"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+            <RadioButton android:id="@+id/rbtnCercos"
+                android:text="Solo Cercos Eléctricos"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+        </RadioGroup>
+
+        <View android:layout_width="match_parent" android:layout_height="8dp"/>
+
+        <TextView
+            android:text="COSTO SERVICIO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvCostoServicio"
+            android:text="S/ 0.00"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="COSTO INSTALACIÓN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvCostoInstalacion"
+            android:text="S/ 0.00"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="DESCUENTO"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvDescuento"
+            android:text="S/ 0.00"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="TOTAL A PAGAR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvTotalPagar"
+            android:text="S/ 0.00"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+
+            <Button
+                android:id="@+id/btnCalcular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Calcular" />
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnImprimir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Imprimir" />
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnFinalizar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Finalizar" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

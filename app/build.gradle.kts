@@ -36,11 +36,16 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
 
 }
 
 dependencies {
+
+    implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("com.google.android.material:material:1.12.0")
+
     implementation(libs.androidx.ui.text)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.core.ktx)
@@ -54,6 +59,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.foundation)
     implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.appcompat)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

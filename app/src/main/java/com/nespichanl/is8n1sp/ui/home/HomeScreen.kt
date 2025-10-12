@@ -1,5 +1,8 @@
 package com.nespichanl.is8n1sp.ui.home
 
+import android.app.Activity
+import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -26,8 +29,11 @@ import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import com.nespichanl.is8n1sp.R
+import com.nespichanl.is8n1sp.transfer.ProductEntryActivity
+import com.nespichanl.is8n1sp.ui.tableview.S07TableActivity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,6 +44,31 @@ fun HomeScreen(
     onOpenDataPass: () -> Unit = {},
     onExit: () -> Unit = {}
 ) {
+    val context = LocalContext.current
+
+    val onOpenServicios: () -> Unit = {
+        try {
+            val intent = Intent(context, ProductEntryActivity::class.java).apply {
+                if (context !is Activity) addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(
+                context,
+                "No se pudo abrir S05: ${e.javaClass.simpleName}",
+                Toast.LENGTH_LONG
+            ).show()
+            e.printStackTrace()
+        }
+    }
+
+    val onOpenS07: () -> Unit = {
+        val intent = Intent(context, S07TableActivity::class.java).apply {
+            if (context !is Activity) addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        context.startActivity(intent)
+    }
+
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
 
@@ -99,7 +130,9 @@ fun HomeScreen(
             HomeContent(
                 modifier = Modifier.padding(innerPadding),
                 onOpenGrades = onOpenGrades,
-                onOpenDataPass = onOpenDataPass
+                onOpenDataPass = onOpenDataPass,
+                onOpenServicios = onOpenServicios,
+                onOpenS07 = onOpenS07
             )
         }
     }
@@ -138,7 +171,9 @@ private data class DrawerOption(val title: String, val onClick: () -> Unit)
 private fun HomeContent(
     modifier: Modifier = Modifier,
     onOpenGrades: () -> Unit,
-    onOpenDataPass: () -> Unit
+    onOpenDataPass: () -> Unit,
+    onOpenServicios: () -> Unit,
+    onOpenS07: () -> Unit,
 ) {
     val opciones = listOf(
         OpcionHome(
@@ -150,6 +185,16 @@ private fun HomeContent(
             titulo = "S03 → Paso de Datos entre Actividades",
             descripcion = "Formulario: Id, Nombre, Precio → Mostrar Data Ingresada",
             onClick = onOpenDataPass
+        ),
+        OpcionHome(
+            titulo = "S05 → Manejo de controles básicos y layouts",
+            descripcion = "Aplicación de Servicios",
+            onClick = onOpenServicios
+        ),
+        OpcionHome(
+            titulo = "S07 → Navegación TableView",
+            descripcion = "Datos en forma de tabla utilizando RecyclerView y un diseño personalizado",
+            onClick = onOpenS07
         ),
     )
 
