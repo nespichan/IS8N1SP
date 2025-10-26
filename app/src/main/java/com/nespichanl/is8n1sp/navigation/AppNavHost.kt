@@ -11,6 +11,7 @@ import com.nespichanl.is8n1sp.ui.about.AboutScreen
 import com.nespichanl.is8n1sp.ui.grades.GradesScreen
 import com.nespichanl.is8n1sp.ui.home.HomeScreen
 import com.nespichanl.is8n1sp.ui.members.MembersScreen
+import com.nespichanl.is8n1sp.ui.s09.S09Screen
 import com.nespichanl.is8n1sp.ui.splash.SplashScreen
 import com.nespichanl.is8n1sp.ui.transfer.ProductEntryActivity
 
@@ -36,12 +37,15 @@ fun AppNavHost(startDestination: String = "splash") {
                 onOpenDataPass = {
                     context.startActivity(Intent(context, ProductEntryActivity::class.java))
                 },
+                onOpenS09 = { navController.navigate( route = "s09") },
                 onExit        = {
                     (context as? Activity)?.finishAffinity()
                 }
             )
         }
-
+        composable(route = "s09") {
+            S09Screen(onContinue = { navController.navigate("home") })
+        }
         composable("grades") {
             GradesScreen(onContinue = { navController.navigate("home") }) }
         composable("about")  {

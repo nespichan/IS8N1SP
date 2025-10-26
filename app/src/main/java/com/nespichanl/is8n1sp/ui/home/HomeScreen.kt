@@ -42,6 +42,7 @@ fun HomeScreen(
     onOpenAbout: () -> Unit = {},
     onOpenGrades: () -> Unit = {},
     onOpenDataPass: () -> Unit = {},
+    onOpenS09: () -> Unit = {},
     onExit: () -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -132,7 +133,8 @@ fun HomeScreen(
                 onOpenGrades = onOpenGrades,
                 onOpenDataPass = onOpenDataPass,
                 onOpenServicios = onOpenServicios,
-                onOpenS07 = onOpenS07
+                onOpenS07 = onOpenS07,
+                onOpenS09 = onOpenS09,
             )
         }
     }
@@ -174,6 +176,7 @@ private fun HomeContent(
     onOpenDataPass: () -> Unit,
     onOpenServicios: () -> Unit,
     onOpenS07: () -> Unit,
+    onOpenS09: () -> Unit,
 ) {
     val opciones = listOf(
         OpcionHome(
@@ -196,6 +199,11 @@ private fun HomeContent(
             descripcion = "Datos en forma de tabla utilizando RecyclerView y un diseño personalizado",
             onClick = onOpenS07
         ),
+        OpcionHome(
+            titulo = "S09 → Actividades asíncronas",
+            descripcion = "Thread + ProgressBar: suma de pares y factorial en segundo plano",
+            onClick = onOpenS09
+        )
     )
 
     Column(

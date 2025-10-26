@@ -14,6 +14,7 @@ navigationCompose = "2.9.3"
 foundation = "1.9.0"
 foundationVersion = "1.9.1"
 appcompat = "1.7.1"
+androidxFoundation = "1.9.4"
 
 [libraries]
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
@@ -40,6 +41,7 @@ androidx-foundation = { group = "androidx.compose.foundation", name = "foundatio
 material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundationVersion" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "androidxFoundation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
