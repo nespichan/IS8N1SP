@@ -15,6 +15,7 @@ foundation = "1.9.0"
 foundationVersion = "1.9.1"
 appcompat = "1.7.1"
 androidxFoundation = "1.9.4"
+ui = "1.9.4"
 
 [libraries]
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
@@ -42,9 +43,11 @@ material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundationVersion" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "androidxFoundation" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "ui" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version = "2.0.21-1.0.27" }

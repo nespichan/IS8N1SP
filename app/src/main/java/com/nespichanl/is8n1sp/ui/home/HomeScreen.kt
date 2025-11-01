@@ -43,6 +43,7 @@ fun HomeScreen(
     onOpenGrades: () -> Unit = {},
     onOpenDataPass: () -> Unit = {},
     onOpenS09: () -> Unit = {},
+    onOpenS10: () -> Unit = {},
     onExit: () -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -135,6 +136,7 @@ fun HomeScreen(
                 onOpenServicios = onOpenServicios,
                 onOpenS07 = onOpenS07,
                 onOpenS09 = onOpenS09,
+                onOpenS10 = onOpenS10,
             )
         }
     }
@@ -177,6 +179,7 @@ private fun HomeContent(
     onOpenServicios: () -> Unit,
     onOpenS07: () -> Unit,
     onOpenS09: () -> Unit,
+    onOpenS10: () -> Unit,
 ) {
     val opciones = listOf(
         OpcionHome(
@@ -203,6 +206,11 @@ private fun HomeContent(
             titulo = "S09 → Actividades asíncronas",
             descripcion = "Thread + ProgressBar: suma de pares y factorial en segundo plano",
             onClick = onOpenS09
+        ),
+        OpcionHome(
+            titulo = "S10 → Actividades asincrónicas",
+            descripcion = "Aplicación que permite realizar CRUD utilizando Sqllite con hilos (Room + Coroutines)",
+            onClick = onOpenS10
         )
     )
 
