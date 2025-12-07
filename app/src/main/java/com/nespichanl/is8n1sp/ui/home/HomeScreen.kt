@@ -2,6 +2,7 @@ package com.nespichanl.is8n1sp.ui.home
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.material3.Scaffold
@@ -33,6 +34,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import com.nespichanl.is8n1sp.R
 import com.nespichanl.is8n1sp.transfer.ProductEntryActivity
+import com.nespichanl.is8n1sp.ui.s14.S14CrudActivity
 import com.nespichanl.is8n1sp.ui.tableview.S07TableActivity
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,6 +46,7 @@ fun HomeScreen(
     onOpenDataPass: () -> Unit = {},
     onOpenS09: () -> Unit = {},
     onOpenS10: () -> Unit = {},
+    onOpenS14: () -> Unit = {},
     onExit: () -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -70,6 +73,25 @@ fun HomeScreen(
         }
         context.startActivity(intent)
     }
+
+    val onOpenS14Internal: () -> Unit = {
+        Log.d("S14", "Click en card S14")
+        try {
+            val intent = Intent(context, S14CrudActivity::class.java).apply {
+                if (context !is Activity) addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            Log.d("S14", "Lanzando intent S14CrudActivity")
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            Log.e("S14", "Error abriendo S14", e)
+            Toast.makeText(
+                context,
+                "No se pudo abrir S14: ${e.javaClass.simpleName}",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
 
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -137,6 +159,7 @@ fun HomeScreen(
                 onOpenS07 = onOpenS07,
                 onOpenS09 = onOpenS09,
                 onOpenS10 = onOpenS10,
+                onOpenS14 = onOpenS14Internal
             )
         }
     }
@@ -180,6 +203,7 @@ private fun HomeContent(
     onOpenS07: () -> Unit,
     onOpenS09: () -> Unit,
     onOpenS10: () -> Unit,
+    onOpenS14: () -> Unit
 ) {
     val opciones = listOf(
         OpcionHome(
@@ -211,6 +235,11 @@ private fun HomeContent(
             titulo = "S10 → Actividades asincrónicas",
             descripcion = "Aplicación que permite realizar CRUD utilizando Sqllite con hilos (Room + Coroutines)",
             onClick = onOpenS10
+        ),
+        OpcionHome(
+            titulo = "S14 → Pantalla de aplicación Android",
+            descripcion = "Escritorio, Listar e Insertar utilizando servicios web",
+            onClick = onOpenS14
         )
     )
 

@@ -27,6 +27,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".ui.s14.S14CrudActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ui.transfer.ProductSummaryActivity"
             android:exported="false" />
 
